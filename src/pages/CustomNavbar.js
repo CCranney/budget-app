@@ -11,7 +11,7 @@ import {
 } from 'reactstrap';
 
 export const BudgetNavbar = () => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
 
   return (
