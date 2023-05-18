@@ -9,7 +9,7 @@ export const BudgetCard = ({name}) => {
 
     const toggle = () => setIsOpen(!isOpen);
     return (
-        <Card className='col-sm-5' >
+        <Card className='col-sm' >
             <CardHeader>{name}</CardHeader>
             <CardBody>
                 <div className='row '>
