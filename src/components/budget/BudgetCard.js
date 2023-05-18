@@ -1,33 +1,45 @@
 import React from 'react'
-import { Card, CardBody, CardSubtitle, CardText, CardTitle, Input, InputGroup, InputGroupText } from 'reactstrap'
+import { Button, Card, CardBody, CardHeader, CardSubtitle, CardText, CardTitle, Collapse, Input, InputGroup, InputGroupText } from 'reactstrap'
 import './BudgetCard.css'
-
+import { useState } from 'react'
 
 export const BudgetCard = ({name}) => {
-  return (
-    <Card body className='col-sm-8' >
-        <CardBody>
-            <div className='row '>
-                <div className='w-75'>
-                    <CardTitle>{name}</CardTitle>
-                    <CardSubtitle>month additions + carryover - expenses</CardSubtitle>
+
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggle = () => setIsOpen(!isOpen);
+    return (
+        <Card className='col-sm-5' >
+            <CardHeader>{name}</CardHeader>
+            <CardBody>
+                <div className='row '>
+                    <div className='w-50'>
+                        <InputGroup>
+                            <InputGroupText className='card-input-symbol'>+</InputGroupText>
+                            <Input placeholder='0.00'/>
+                        </InputGroup>
+                        <InputGroup>
+                            <InputGroupText className='card-input-symbol'>+</InputGroupText>
+                            <Input placeholder='0.00' readOnly={true}/>
+                        </InputGroup>
+                        <InputGroup>
+                            <InputGroupText className='card-input-symbol'>-</InputGroupText>
+                            <Input placeholder='0.00' readOnly={true}/>
+                        </InputGroup>
+                    </div>
+                    <div className='w-50'>
+                        <Card className='h-50'>
+                            <CardText className='card-text-final-output m-auto'>0.00</CardText>
+                        </Card>
+                        <Button className='m-auto' onClick={toggle}>Goals</Button>
+                    </div>
+                </div>
+                <Collapse isOpen={isOpen}>
                     <InputGroup>
-                        <InputGroupText>+</InputGroupText>
-                        <Input placeholder='0.00'/>
-                        <InputGroupText>+</InputGroupText>
-                        <Input placeholder='0.00' readOnly={true}/>
-                        <InputGroupText>-</InputGroupText>
-                        <Input placeholder='0.00' readOnly={true}/>
-                        <InputGroupText>=</InputGroupText>
+                        <Input placeholder='placeholder for goals' readOnly/>
                     </InputGroup>
-                </div>
-                <div className='w-25'>
-                    <Card className='h-100'>
-                        <CardText className='card-text-final-output m-auto'>0.00</CardText>
-                    </Card>
-                </div>
-            </div>
-        </CardBody>
-    </Card>
-  )
+                </Collapse>
+            </CardBody>
+        </Card>
+    )
 }
