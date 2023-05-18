@@ -2,3 +2,7 @@
     font-size: x-large;
     font-weight: 700;
 }
+
+.card-input-symbol {
+    width: 2rem;
+}
